@@ -11,6 +11,7 @@ public class BankingApplication {
 	}
 }
 
+//create aclass for bankAccount with initializing the variables
 class BankAccount {
 
 	int balance;
@@ -18,21 +19,25 @@ class BankAccount {
 	String customername;
 	String customerID;
 
+	//Constructor is created 
 	BankAccount(String cusN, String cusID) {
 		customername = cusN;
 		customerID = cusID;
 	}
 
+	// Creating a Method for Deposit
 	void deposit(int amount) {
 		balance = balance + amount;
 		previoustransaction = amount;
 	}
 
+	// Creating a Method for WithDraw
 	void withdrawn(int amount) {
 		balance = balance - amount;
 		previoustransaction = -amount;
 	}
-
+		
+	// Creating a Method to get a previous transactions
 	void getprevioustransaction() {
 		if (previoustransaction > 0) {
 			System.out.println("Credited :" + previoustransaction);
@@ -43,6 +48,7 @@ class BankAccount {
 		}
 	}
 
+	//This method is doing all operations to get a final result
 	void showmenu() {
 
 		char option = '\0';
