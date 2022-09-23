@@ -1,19 +1,22 @@
-package com.sumanth.project;
-
 import java.util.Scanner;
 
 public class BankingApplication {
 
 	public static void main(String[] args) {
+		Scanner scn1 = new Scanner(System.in);
+		System.out.println("Enter your Username : ");
+		String names = scn1.next();
+		System.out.println("Enter your customer ID : ");
+		String identity = scn1.next();
 
-		BankAccount first = new BankAccount("Dr Siddalinga Murthy", "SD1234");
+		BankAccount first = new BankAccount(names, identity);
 		first.showmenu();
 	}
 }
 
 //create aclass for bankAccount with initializing the variables
 class BankAccount {
-
+	Scanner scn = new Scanner(System.in);
 	int balance;
 	int previoustransaction;
 	String customername;
@@ -52,10 +55,9 @@ class BankAccount {
 	void showmenu() {
 
 		char option = '\0';
-		Scanner scn = new Scanner(System.in);
 
-		System.out.println("welcome " + customername);
-		System.out.println("Your ID is :" + customerID);
+		System.out.println("Welcome " + customername + " !");
+		System.out.println("Your customer ID is :" + customerID);
 		System.out.println("\n");
 		System.out.println("A. Check Balance");
 		System.out.println("B. Withdraw");
@@ -71,50 +73,37 @@ class BankAccount {
 			System.out.println("\n");
 
 			switch (option) {
-			case 'A':
-
-				System.out.println("======================================================");
-				System.out.println("Balance:  " + balance);
-				System.out.println("======================================================");
-				System.out.println("\n");
-				break;
-
-			case 'B':
-
-				System.out.println("======================================================");
-				System.out.println("Enter the amount to withdraw:");
-				int amount = scn.nextInt();
-				withdrawn(amount);
-				System.out.println("\n");
-				break;
-
-			case 'C':
-
-				System.out.println("======================================================");
-				System.out.println("Enter the amount to Deposit :");
-				int amount1 = scn.nextInt();
-				deposit(amount1);
-				System.out.println("\n");
-				break;
-
-			case 'D':
-				System.out.println("======================================================");
-				System.out.println("Your previous transaction is :");
-				getprevioustransaction();
-				break;
-
-			case 'E':
-				System.out.println("******************************************************");
-				break;
-
-			default:
-				System.out.println("Invalid option.... Please try again");
-				break;
-
+				case 'A' -> {
+					System.out.println("======================================================");
+					System.out.println("Balance:  " + balance);
+					System.out.println("======================================================");
+					System.out.println("\n");
+				}
+				case 'B' -> {
+					System.out.println("======================================================");
+					System.out.println("Enter the amount to withdraw:");
+					int amount = scn.nextInt();
+					withdrawn(amount);
+					System.out.println("\n");
+				}
+				case 'C' -> {
+					System.out.println("======================================================");
+					System.out.println("Enter the amount to Deposit :");
+					int amount1 = scn.nextInt();
+					deposit(amount1);
+					System.out.println("\n");
+				}
+				case 'D' -> {
+					System.out.println("======================================================");
+					System.out.println("Your previous transaction is :");
+					getprevioustransaction();
+				}
+				case 'E' -> System.out.println("======================================================");
+				default -> System.out.println("Invalid option.... Please try again");
 			}
 
 		} while (option != 'E');
-		System.out.println("Thank you have a great day");
+		System.out.println("Thank you have a great day :)");
 
 	}
 }
